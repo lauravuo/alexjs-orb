@@ -1,4 +1,5 @@
 Greet() {
+    npx alex
     echo Hello "${PARAM_TO}"
 }
 

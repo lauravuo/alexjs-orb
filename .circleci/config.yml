@@ -87,7 +87,7 @@ workflows:
       # be skipped.
       # e.g. [semver:patch] will cause a patch version to be published.
       - orb-tools/dev-promote-prod-from-commit-subject:
-          orb-name: <namespace>/<orb-name>
+          orb-name: lauravuo/alexjs-orb
           context: orb-publishing
           add-pr-comment: false
           fail-if-semver-not-indicated: true
@@ -96,4 +96,4 @@ workflows:
             - integration-test-1
           filters:
             branches:
-              only: master
+              only: main
