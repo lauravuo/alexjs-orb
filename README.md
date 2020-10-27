@@ -1,4 +1,4 @@
-# Orb Project Template
+# alexjs-orb
 [![CircleCI Build Status](https://circleci.com/gh/lauravuo/alexjs-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/lauravuo/alexjs-orb) 
 
 <!---
