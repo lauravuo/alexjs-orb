@@ -17,4 +17,4 @@ steps:
         PARAM_VERSION: <<parameters.version>>
         PARAM_ARGS: <<parameters.args>>
       name: Lint
-      command: <<include(scripts/lint.sh)>>
+      command: <<include(scripts/alex.sh)>>
