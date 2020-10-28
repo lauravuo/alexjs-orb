@@ -1,5 +1,5 @@
 Alex() {
-    npm install --global alex@"${PARAM_VERSION}"
+    sudo npm install --global alex@"${PARAM_VERSION}" > "/dev/null" 2>&1
     alex "${PARAM_ARGS}"
 }
 
