@@ -1,5 +1,5 @@
 Alex() {
-    npm install --global alex@${PARAM_VERSION}
+    npm install --global alex@"${PARAM_VERSION}"
     alex "${PARAM_ARGS}"
 }
 
