@@ -1,0 +1,22 @@
+description: >
+  Lint using alex
+# What will this job do?
+# Descriptions should be short, simple, and clear.
+
+executor: default
+
+parameters:
+  version:
+    type: string
+    default: "9.0.1"
+    description: "Alex.js version"
+  args:
+    type: string
+    default: ""
+    description: "Arguments passed to Alex.js"
+steps:
+#TODO: cache deps?
+  - checkout
+  - alex:
+      version: << parameters.version >>
+      args: << parameters.args >>
