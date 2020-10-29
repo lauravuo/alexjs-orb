@@ -44,7 +44,7 @@ workflows:
     jobs:
       - alexjs-orb/lint:
           version: "9.0.1"
-          args: ./src/test/test.md
+          args: ./src/tests/test.md
 
 ```
 

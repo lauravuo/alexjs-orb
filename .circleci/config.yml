@@ -75,7 +75,7 @@ workflows:
       # Run any integration tests defined within the `jobs` key.
       - alexjs-orb/lint:
           version: "9.0.1"
-          args: ./src/test/test.md
+          args: ./src/tests/test.md
       # Publish a semver version of the orb. relies on
       # the commit subject containing the text "[semver:patch|minor|major|skip]"
       # as that will determine whether a patch, minor or major
