@@ -22,17 +22,10 @@ parameters:
     type: string
     default: "dev:alpha"
 
-jobs:
-  # Define one or more jobs which will utilize your orb's commands and parameters to validate your changes.
-  integration-test-1:
+executors:
+  node:
     docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      # "greet" is a sample command packaged with this orb config.
-      # This sample integration test will run as long as the greet command exists. Once you remove the greet command you should remove this line.
-      # Push new changes first, before adding new tests to your config.
-      - alexjs-orb/greet
+        - image: cimg/node:lts
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
@@ -48,6 +41,7 @@ workflows:
       # optional: Run BATS tests against your scripts
       - bats/run:
           path: ./src/tests
+          exec_environment: node
       # If you accept building open source forks, protect your secrects behind a restricted context.
       # A job containing restricted context (which holds your orb publishing credentials) may only be accessed by a user with proper permissions.
       # An open source user may begin a pipeline with a PR, and once the pipeline is approved by an authorized user at this point, the pipeline will continue with the proper context permissions.
@@ -79,7 +73,9 @@ workflows:
     when: << pipeline.parameters.run-integration-tests >>
     jobs:
       # Run any integration tests defined within the `jobs` key.
-      - integration-test-1
+      - alexjs-orb/lint:
+          version: "9.0.1"
+          args: ./src/tests/test.md
       # Publish a semver version of the orb. relies on
       # the commit subject containing the text "[semver:patch|minor|major|skip]"
       # as that will determine whether a patch, minor or major
@@ -87,13 +83,13 @@ workflows:
       # be skipped.
       # e.g. [semver:patch] will cause a patch version to be published.
       - orb-tools/dev-promote-prod-from-commit-subject:
-          orb-name: <namespace>/<orb-name>
+          orb-name: lauravuo/alexjs-orb
           context: orb-publishing
           add-pr-comment: false
           fail-if-semver-not-indicated: true
           publish-version-tag: false
           requires:
-            - integration-test-1
+            - alexjs-orb/lint
           filters:
             branches:
-              only: master
+              only: main

@@ -1,0 +1,20 @@
+description: >
+  This command runs linter Alex.js
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+parameters:
+  version:
+    type: string
+    default: "9.0.1"
+    description: "Alex.js version"
+  args:
+    type: string
+    default: ""
+    description: "Arguments passed to Alex.js"
+steps:
+  - run:
+      environment:
+        PARAM_VERSION: <<parameters.version>>
+        PARAM_ARGS: <<parameters.args>>
+      name: Lint
+      command: <<include(scripts/alex.sh)>>

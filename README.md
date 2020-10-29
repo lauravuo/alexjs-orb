@@ -1,16 +1,52 @@
 # alexjs-orb
+
 [![CircleCI Build Status](https://circleci.com/gh/lauravuo/alexjs-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/lauravuo/alexjs-orb) 
 
-<!---
-[![CircleCI Orb Version](https://img.shields.io/badge/endpoint.svg?url=https://badges.circleci.io/orb/<namespace>/<orb-name>)](https://circleci.com/orbs/registry/orb/<namespace>/<orb-name>) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/<organization>/<project-name>/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
+[![CircleCI Orb Version](https://img.shields.io/badge/endpoint.svg?url=https://badges.circleci.io/orb/lauravuo/alexjs-orb)](https://circleci.com/orbs/registry/orb/lauravuo/alexjs-orb)
 
---->
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-A starter template for orb projects. Build, test, and publish orbs automatically on CircleCI with [Orb-Tools](https://circleci.com/orbs/registry/orb/circleci/orb-tools).
 
-Additional READMEs are available in each directory.
+CircleCI orb for [Alex](https://alexjs.com/). The tool lints documentations files for insensitive writing.
 
-**Meta**: This repository is open for contributions! Feel free to open a pull request with your changes. Due to the nature of this repository, it is not built on CircleCI. The Resources and How to Contribute sections relate to an orb created with this template, rather than the template itself.
+## Usage
+
+**Simple example:**
+
+```yaml
+version: 2.1
+
+orbs:
+  alexjs-orb: lauravuo/alexjs-orb@0.0.1
+
+workflows:
+  lint:
+    jobs:
+      alexjs-orb/lint
+
+```
+
+**Orb configuration:**
+
+* *version* defines Alex version
+* *args* are arguments passed to Alex 
+
+Check [Alex docs](https://github.com/get-alex/alex) for more tips how to configure the linting.
+
+```yaml
+version: 2.1
+
+orbs:
+  alexjs-orb: lauravuo/alexjs-orb@0.0.1
+
+workflows:
+  lint:
+    jobs:
+      - alexjs-orb/lint:
+          version: "9.0.1"
+          args: ./src/tests/test.md
+
+```
 
 ## Resources
 
@@ -19,11 +55,11 @@ Additional READMEs are available in each directory.
 
 ### How to Contribute
 
-We welcome [issues](https://github.com/<organization>/<project-name>/issues) to and [pull requests](https://github.com/<organization>/<project-name>/pulls) against this repository!
+We welcome [issues](https://github.com/lauravuo/alexjs-orb/issues) to and [pull requests](https://github.com/lauravuo/alexjs-orb/pulls) against this repository!
 
 ### How to Publish
 * Create and push a branch with your new features.
-* When ready to publish a new production version, create a Pull Request from fore _feature branch_ to `master`.
+* When ready to publish a new production version, create a Pull Request from fore _feature branch_ to `main`.
 * The title of the pull request must contain a special semver tag: `[semver:<segement>]` where `<segment>` is replaced by one of the following values.
 
 | Increment | Description|
@@ -37,7 +73,4 @@ Example: `[semver:major]`
 
 * Squash and merge. Ensure the semver tag is preserved and entered as a part of the commit message.
 * On merge, after manual approval, the orb will automatically be published to the Orb Registry.
-
-
-For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss](https://discuss.circleci.com/c/orbs).
 
