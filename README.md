@@ -1,17 +1,17 @@
 # alexjs-orb
 
 [![CircleCI Build Status](https://circleci.com/gh/lauravuo/alexjs-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/lauravuo/alexjs-orb) 
-
 [![CircleCI Orb Version](https://img.shields.io/badge/endpoint.svg?url=https://badges.circleci.io/orb/lauravuo/alexjs-orb)](https://circleci.com/orbs/registry/orb/lauravuo/alexjs-orb)
-
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 
-CircleCI orb for [Alex](https://alexjs.com/). The tool lints documentations files for insensitive writing.
+CircleCI orb for [Alex](https://alexjs.com/). The tool lints documentation files for insensitive writing.
 
 ## Usage
 
 **Simple example:**
+
+Lints all project documentation files
 
 ```yaml
 version: 2.1

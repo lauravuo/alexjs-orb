@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  # Replace this with your own!
+  alex-rel: lauravuo/alexjs-orb@0.0.1
   alexjs-orb: lauravuo/alexjs-orb@<<pipeline.parameters.dev-orb-version>>
   orb-tools: circleci/orb-tools@10.0
   bats: circleci/bats@1.0
@@ -33,6 +33,7 @@ workflows:
   test-pack:
     unless: << pipeline.parameters.run-integration-tests >>
     jobs:
+      - alex-rel/lint # Lint this repository docs with latest release
       - orb-tools/lint # Lint Yaml files
       - orb-tools/pack # Pack orb source
       - shellcheck/check:
