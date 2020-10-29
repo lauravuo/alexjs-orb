@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  # Replace this with your own!
+  alex-rel: lauravuo/alexjs-orb@0.0.1
   alexjs-orb: lauravuo/alexjs-orb@<<pipeline.parameters.dev-orb-version>>
   orb-tools: circleci/orb-tools@10.0
   bats: circleci/bats@1.0
@@ -33,6 +33,7 @@ workflows:
   test-pack:
     unless: << pipeline.parameters.run-integration-tests >>
     jobs:
+      - alex-rel/lint # Lint this repository docs with latest release
       - orb-tools/lint # Lint Yaml files
       - orb-tools/pack # Pack orb source
       - shellcheck/check:
@@ -48,6 +49,7 @@ workflows:
       - hold-for-dev-publish:
           type: approval
           requires:
+            - alex-rel/lint
             - orb-tools/lint
             - orb-tools/pack
             - bats/run
@@ -55,7 +57,7 @@ workflows:
       # Publish development version(s) of the orb.
       - orb-tools/publish-dev:
           orb-name: lauravuo/alexjs-orb
-          context: orb-publishing # A restricted context containing your private publishing credentials. Will only execute if approved by an authorized user.
+          context: orb-publishing # A restricted context containing your private publishing credentials. Run only if approved by an authorized user.
           requires: [hold-for-dev-publish]
       # Trigger an integration workflow to test the
       # dev:${CIRCLE_SHA1:0:7} version of your orb
