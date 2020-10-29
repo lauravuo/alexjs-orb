@@ -49,6 +49,7 @@ workflows:
       - hold-for-dev-publish:
           type: approval
           requires:
+            - alex-rel/lint
             - orb-tools/lint
             - orb-tools/pack
             - bats/run
@@ -56,7 +57,7 @@ workflows:
       # Publish development version(s) of the orb.
       - orb-tools/publish-dev:
           orb-name: lauravuo/alexjs-orb
-          context: orb-publishing # A restricted context containing your private publishing credentials. Will only execute if approved by an authorized user.
+          context: orb-publishing # A restricted context containing your private publishing credentials. Run only if approved by an authorized user.
           requires: [hold-for-dev-publish]
       # Trigger an integration workflow to test the
       # dev:${CIRCLE_SHA1:0:7} version of your orb

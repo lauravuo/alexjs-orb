@@ -9,9 +9,7 @@ CircleCI orb for [Alex](https://alexjs.com/). The tool lints documentation files
 
 ## Usage
 
-**Simple example:**
-
-Lints all project documentation files
+Example for linting all project documentation files:
 
 ```yaml
 version: 2.1
@@ -26,7 +24,7 @@ workflows:
 
 ```
 
-**Orb configuration:**
+**Example with orb configuration:**
 
 * *version* defines Alex version
 * *args* are arguments passed to Alex 
@@ -59,8 +57,8 @@ We welcome [issues](https://github.com/lauravuo/alexjs-orb/issues) to and [pull 
 
 ### How to Publish
 * Create and push a branch with your new features.
-* When ready to publish a new production version, create a Pull Request from fore _feature branch_ to `main`.
-* The title of the pull request must contain a special semver tag: `[semver:<segement>]` where `<segment>` is replaced by one of the following values.
+* When ready to publish a new production version, create a Pull Request from _feature branch_ to `main`.
+* The title of the pull request must contain a semver tag: `[semver:<segement>]` where `<segment>` is replaced by one of the following values.
 
 | Increment | Description|
 | ----------| -----------|
